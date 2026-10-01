@@ -29,6 +29,9 @@ jobs:
       # one, and that version reporting works without an -ldflags stamp.
       - name: go install smoke
         run: |
-          go install ./cmd/golunch
-          "$(go env GOPATH)/bin/golunch" version
-          "$(go env GOPATH)/bin/golunch" doctor
+          g="$(go env GOPATH)/bin/golunch"
+          rc=0
+          go install ./cmd/golunch || { echo "::error::smoke failed at: go install"; rc=1; }
+          if [ "$rc" = 0 ]; then "$g" version || { echo "::error::smoke failed at: version"; rc=1; }; fi
+          if [ "$rc" = 0 ]; then "$g" doctor || { echo "::error::smoke failed at: doctor"; rc=1; }; fi
+          exit $rc
