@@ -1,0 +1,9 @@
+{"ts":"2026-09-28T11:24:41.139Z","type":"hook_event","hookEventName":"agent_start","agentId":"agent_fixture_1","taskId":"conv_fixture_1","parentAgentId":null}
+{"ts":"2026-09-28T11:24:41.143Z","type":"agent_event","event":{"type":"iteration_start","iteration":1}}
+{"ts":"2026-09-28T11:24:42.001Z","type":"agent_event","event":{"type":"content_start","contentType":"text"}}
+{"ts":"2026-09-28T11:24:42.300Z","type":"agent_event","event":{"type":"content_start","contentType":"tool","toolCallId":"call_abc123","toolName":"execute_command","input":{"command":"ls -1"}}}
+{"ts":"2026-09-28T11:24:43.100Z","type":"agent_event","event":{"type":"tool_result","toolCallId":"call_abc123","toolName":"execute_command","text":"go.mod\ninternal\n"}}
+{"ts":"2026-09-28T11:24:44.000Z","type":"agent_event","event":{"type":"usage","usage":{"inputTokens":1200,"outputTokens":85,"cacheReadTokens":400,"cacheWriteTokens":0,"totalCost":0.0031}}}
+{"ts":"2026-09-28T11:24:44.200Z","type":"agent_event","event":{"type":"iteration_end","iteration":1}}
+{"ts":"2026-09-28T11:24:44.400Z","type":"agent_event","event":{"type":"content_start","contentType":"text","text":"Two entries: go.mod and internal."}}
+{"ts":"2026-09-28T11:24:44.500Z","type":"run_result","finishReason":"finish","iterations":2,"usage":{"inputTokens":1200,"outputTokens":85,"cacheReadTokens":400,"cacheWriteTokens":0,"totalCost":0.0031},"aggregateUsage":{"inputTokens":1400,"outputTokens":110,"cacheReadTokens":400,"cacheWriteTokens":0,"totalCost":0.0042},"durationMs":3361,"text":"Two entries: go.mod and internal.","model":{"id":"qwen/qwen3.7-flash","provider":"cline"}}

@@ -1,0 +1,8 @@
+{"type":"step_start","timestamp":1790594631091,"sessionID":"ses_fixture0001","part":{"id":"prt_1","messageID":"msg_1"}}
+{"type":"text","timestamp":1790594631500,"sessionID":"ses_fixture0001","text":"Listing the project now."}
+{"type":"tool_use","timestamp":1790594632000,"sessionID":"ses_fixture0001","callID":"call_kilo_1","tool":"bash","state":{"status":"completed","input":{"command":"ls -1"},"output":"go.mod\ninternal\n"}}
+{"type":"reasoning","timestamp":1790594632500,"sessionID":"ses_fixture0001","text":"The user asked for a short answer."}
+{"type":"step_finish","timestamp":1790594633000,"sessionID":"ses_fixture0001","cost":0.0021,"tokens":{"input":980,"output":64,"reasoning":12,"total":1056,"cache":{"read":256,"write":0}}}
+{"type":"text","timestamp":1790594633800,"sessionID":"ses_fixture0001","text":"Two entries: go.mod and internal."}
+{"type":"step_finish","timestamp":1790594634000,"sessionID":"ses_fixture0001","cost":0.0019,"tokens":{"input":1100,"output":40,"reasoning":0,"total":1140,"cache":{"read":0,"write":0}}}
+{"type":"session.idle","timestamp":1790594634100,"sessionID":"ses_fixture0001"}

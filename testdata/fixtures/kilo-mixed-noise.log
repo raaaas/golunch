@@ -1,0 +1,9 @@
+██  ██ ██▌   ██  ██   ██▌     ████ ██     ██▌
+████▌ ~~██   ██  ~~ ██~~██   ██~~~~ ██     ~~██
+INFO  2026-09-28T11:24:41 +13ms service=default version=7.7.9 command=run process_role=main run_id=c975b7d0 opencode
+{"type":"step_start","timestamp":1790594631091,"sessionID":"ses_fixture0001","part":{"id":"prt_1","messageID":"msg_1"}}
+{"type":"text","timestamp":1790594631500,"sessionID":"ses_fixture0001","text":"Listing the project now."}
+{"type":"tool_use","timestamp":1790594632000,"sessionID":"ses_fixture0001"
+not json at all: 42% complete
+fixture0001","cost":0.0019,"tokens":{"input":1100,"output":40,"reasoning":0,"total":1140,"cache":{"read":0,"write":0}}}
+{"type":"session.idle","timestamp":1790594634100,"sessionID":"ses_fixture0001"}
