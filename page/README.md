@@ -1,13 +1,20 @@
-# golunch landing page
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Static React site for the repository, deployed to GitHub Pages by
-`.github/workflows/pages.yml` on every push touching this directory.
+# Run and deploy your AI Studio app
 
-```console
-$ npm install
-$ npm run dev      # http://localhost:3000
-$ npm run build    # emits dist/, which the workflow uploads as the Pages artifact
-```
+This contains everything you need to run your app locally.
 
-The build uses a relative base (`vite.config.ts`), so the same artifact works
-under any project Pages URL.
+View your app in AI Studio: https://ai.studio/apps/9519eef6-4654-40ec-8268-4c8481f06d7d
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

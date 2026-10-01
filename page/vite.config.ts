@@ -5,9 +5,6 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    // Relative asset URLs: the same build serves correctly under any project
-    // Pages path, so renaming the repo does not need a rebuild.
-    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

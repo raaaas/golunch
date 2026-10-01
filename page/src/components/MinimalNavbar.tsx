@@ -4,9 +4,10 @@ import { Terminal, Github, Heart, Copy, Check } from 'lucide-react';
 interface MinimalNavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onHomeClick?: () => void;
 }
 
-export const MinimalNavbar = ({ activeTab, setActiveTab }: MinimalNavbarProps) => {
+export const MinimalNavbar = ({ activeTab, setActiveTab, onHomeClick }: MinimalNavbarProps) => {
   const [copied, setCopied] = useState(false);
 
   const copyInstall = () => {
@@ -26,10 +27,11 @@ export const MinimalNavbar = ({ activeTab, setActiveTab }: MinimalNavbarProps) =
     <header className="sticky top-0 z-50 w-full bg-[#141414]/90 backdrop-blur-md border-b border-[#222222]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between font-mono text-[13px]">
         
-        {/* Brand */}
+        {/* Brand (scroll to top) */}
         <button
-          onClick={() => setActiveTab('playground')}
+          onClick={onHomeClick || (() => setActiveTab('playground'))}
           className="flex items-center gap-2 group text-left cursor-pointer"
+          title="Go to top"
         >
           <span className="w-2.5 h-2.5 rounded-full bg-[#e17a56] shadow-[0_0_8px_#e17a56] group-hover:scale-125 transition-transform duration-200"></span>
           <span className="font-bold tracking-tight text-[#ece8e2] font-mono text-sm">
@@ -40,7 +42,7 @@ export const MinimalNavbar = ({ activeTab, setActiveTab }: MinimalNavbarProps) =
           </span>
         </button>
 
-        {/* Navigation Tabs */}
+        {/* Navigation Tabs (active click handler with visual feedback) */}
         <nav className="flex items-center gap-1 sm:gap-2">
           {navs.map((n) => (
             <button
@@ -48,8 +50,8 @@ export const MinimalNavbar = ({ activeTab, setActiveTab }: MinimalNavbarProps) =
               onClick={() => setActiveTab(n.id)}
               className={`px-2.5 py-1 rounded transition-all cursor-pointer text-xs ${
                 activeTab === n.id
-                  ? 'text-[#e17a56] font-medium bg-[#e17a56]/10 border border-[#e17a56]/30'
-                  : 'text-[#8d8983] hover:text-[#ece8e2]'
+                  ? 'text-[#e17a56] font-medium bg-[#e17a56]/15 border border-[#e17a56]/40 shadow-sm'
+                  : 'text-[#8d8983] hover:text-[#ece8e2] hover:bg-[#1a1a1a]'
               }`}
             >
               {n.label}
