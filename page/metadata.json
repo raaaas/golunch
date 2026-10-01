@@ -1,6 +1,0 @@
-{
-  "name": "golunch — Multi-Agent CLI Isolation Harness",
-  "description": "Run the same agent CLI as many times as you want — each instance with its own private config, login, and proxy. No containers, no namespaces, no daemon.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
