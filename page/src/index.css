@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #141414;
+    --coral: #e17a56;
+    --glow: #ffb08a;
+    --ink: #ece8e2;
+    --mute: #8d8983;
+    --bad: #ff7a66;
+    --border: #222222;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Mono', ui-monospace, Menlo, monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-doto {
+  font-family: 'Doto', 'DM Mono', monospace;
+}
+
+.font-mono-custom {
+  font-family: 'DM Mono', ui-monospace, Menlo, monospace;
+}
+
+/* Subtle scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #141414;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2b2b;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Dotted / hairline accents like claudes.dev */
+.border-dotted-coral {
+  border: 1.5px dotted var(--coral);
+}
+
+.border-subtle {
+  border-color: #242424;
+}
