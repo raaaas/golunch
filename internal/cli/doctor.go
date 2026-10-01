@@ -345,7 +345,14 @@ func (a *App) nestingNote() (string, string) {
 	return a.Cfg.Root, ""
 }
 
+// probeWrite reports whether dir can hold files, creating it first: a data
+// root that does not exist yet is a first run, not a failure — every other
+// command creates it lazily, and doctor must not be the command that
+// contradicts them.
 func probeWrite(dir string) error {
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return err
+	}
 	f, err := os.CreateTemp(dir, ".golunch-probe-*")
 	if err != nil {
 		return err

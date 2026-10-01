@@ -30,6 +30,20 @@ func TestEmptyDirIsNotAlwaysFalse(t *testing.T) {
 	}
 }
 
+// TestProbeWriteFirstRunRoot pins the CI bug: on a machine that never ran
+// golunch, the data root does not exist, and doctor reported that as
+// "not writable" — an error exit — while every other command would simply
+// create it. A missing root must be a first run, not a finding.
+func TestProbeWriteFirstRunRoot(t *testing.T) {
+	missing := filepath.Join(t.TempDir(), "nope", "still-nope")
+	if err := probeWrite(missing); err != nil {
+		t.Fatalf("probeWrite on a never-created root: %v", err)
+	}
+	if st, err := os.Stat(missing); err != nil || !st.IsDir() {
+		t.Fatalf("root was not created: %v %v", st, err)
+	}
+}
+
 // TestDoctorConfigWarningClearsOnSeed is the loop the two commands are for: a
 // fresh instance is warned that it loads no host plugins, and seeding makes the
 // warning go away without ever copying the login.
