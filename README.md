@@ -1,7 +1,7 @@
 # golunch
 
 [![ci](https://github.com/raaaas/golunch/actions/workflows/ci.yml/badge.svg)](https://github.com/raaaas/golunch/actions/workflows/ci.yml)
-[![pages](https://img.shields.io/badge/website-go--lunch-blue)](https://raaaas.github.io/go-lunch/)
+[![pages](https://img.shields.io/badge/website-golunch-blue)](https://raaaas.github.io/golunch/)
 
 ![golunch — multiple agent CLIs, private configs, real isolation, no containers, no daemon](docs/golunch-social.webp)
 
