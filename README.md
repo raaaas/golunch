@@ -436,3 +436,8 @@ the **real** home (resolved from the passwd database) and warns, because otherwi
 `~/.golunch` would silently live inside that instance and be deleted with it. It
 strips `WARREN_*` and `GOLUNCH_INSTANCE*` from a child's environment so an instance
 cannot mistake itself for its parent.
+
+## Support
+
+If golunch saves you the twelve `--config-dir` flags, [sponsor the
+project](https://github.com/sponsors/raaaas).
