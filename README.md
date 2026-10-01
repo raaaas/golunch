@@ -2,6 +2,8 @@
 
 [![ci](https://github.com/raaaas/golunch/actions/workflows/ci.yml/badge.svg)](https://github.com/raaaas/golunch/actions/workflows/ci.yml)
 
+![golunch — multiple agent CLIs, private configs, real isolation, no containers, no daemon](docs/golunch-social.webp)
+
 Run the same agent CLI as many times as you want, each time with its own private
 config, its own login, and its own proxy — without containers, namespaces, or a
 daemon.
