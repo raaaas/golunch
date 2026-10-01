@@ -44,6 +44,9 @@ $ golunch version                     # the module version, no -ldflags needed
 $ golunch config --init               # optional: writes ~/.golunch/config.toml
 ```
 
+Prebuilt binaries for Linux, macOS and Windows are attached to each
+[release](https://github.com/raaaas/golunch/releases), with `checksums.txt`.
+
 From a checkout, to get the git describe string instead of a module version:
 
 ```console

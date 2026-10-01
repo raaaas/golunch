@@ -1,0 +1,52 @@
+name: release
+
+# Pushing a v* tag builds the whole binary matrix and attaches it to a GitHub
+# Release. The tag is also the Go-module publication: proxy.golang.org indexes
+# github.com/raaaas/golunch@vX.Y.Z the moment the last step asks it to.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  binaries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: build
+        env:
+          VER: ${{ github.ref_name }}
+        run: |
+          # The tag name reaches a shell; only semver tags may pass.
+          if [[ ! "$VER" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "not a release tag: $VER"; exit 1
+          fi
+          mkdir -p dist
+          for t in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64; do
+            os=${t%/*}; arch=${t#*/}
+            ext=""; [ "$os" = windows ] && ext=.exe
+            CGO_ENABLED=0 GOOS=$os GOARCH=$arch go build -trimpath \
+              -ldflags "-s -w -X main.version=$VER" \
+              -o "dist/golunch-$os-$arch$ext" ./cmd/golunch
+          done
+          (cd dist && sha256sum golunch-* > checksums.txt)
+      - name: release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+      # Warm the module proxy so `go install ...@vX.Y.Z` resolves immediately
+      # instead of waiting for the first stranger to knock.
+      - name: announce to proxy.golang.org
+        run: |
+          mod=$(go list -m -f '{{.Path}}')
+          curl -fsS "https://proxy.golang.org/${mod}/@v/${GITHUB_REF_NAME}.info" -o /dev/null
+          curl -fsS "https://sum.golang.org/lookup/${mod}@${GITHUB_REF_NAME}" -o /dev/null
+          echo "published $mod@${GITHUB_REF_NAME}"

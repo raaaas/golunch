@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.1.0 (unreleased)
+## v1.1.0 (2026-10-01)
 
 The downloader. Everything before this release could only *wrap* a binary that
 already existed on the host; `golunch install` fetches the agent into the
