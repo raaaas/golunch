@@ -84,8 +84,8 @@ shell are deliberately *not* baked into a permanent script.
 
 **A driver registry, not per-agent code.** `internal/agent` holds one data literal
 per agent — argv builder, line parser, credential paths, env profile. Adding
-claude or codex is a new row. Ships with `cline`, `kilo`, and `opencode` (the
-latter two share a factory: kilo is a fork of opencode).
+claude or codex is a new row. Ships with `cline`, `kilo`, `opencode` (the
+latter two share a factory: kilo is a fork of opencode) and `qoder`.
 
 **Normalized events.** Headless runs decode the agent's NDJSON into one `Event`
 type — `text`, `thinking`, `tool_call`, `usage`, `status`, `error`, `log` — and keep
@@ -434,6 +434,14 @@ shell out to the binary.
 - This kilo build returns no assistant text part for custom OpenAI-compatible local
   providers (verified in the agent's own raw output, not in golunch). Prompt a real
   gateway model, or check `logs/run-*.ndjson` before blaming the launcher.
+- `freebuff` (npm, a manicode-derived TUI) has **no headless mode**: `-p`,
+  `--headless`, subcommands and piped stdin all either error or render the
+  interactive UI as raw escape codes. It is therefore not a registry driver;
+  wrap it for isolated interactive use with `golunch new <alias> --binary
+  <freebuff>` and reach it through passthrough (`golunch run <alias> --
+  --version` works, and the agent's own installer download lands inside the
+  instance tree). `run --prompt` and task fan-out are impossible until the
+  vendor emits parseable output.
 
 ## Nesting
 
