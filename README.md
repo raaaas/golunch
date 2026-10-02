@@ -443,6 +443,21 @@ shell out to the binary.
   instance tree). `run --prompt` and task fan-out are impossible until the
   vendor emits parseable output.
 
+## Agent skill
+
+`skills/golunch-parallel-tasks/SKILL.md` is a portable Agent Skills file: it
+teaches any skill-capable agent (Claude Code, Qoder, opencode/kilo, Codex
+with a skills loader) to preflight nodes, gate on login (bootstrapping auth
+with the user when a node is logged out), split work into a taskfile, fan it
+out in parallel, and collect `summary.json` results. Install by symlinking
+the skill directory into the agent's skills root, e.g.:
+
+```bash
+ln -s "$PWD/skills/golunch-parallel-tasks" ~/.claude/skills/golunch-parallel-tasks
+ln -s "$PWD/skills/golunch-parallel-tasks" ~/.qoder/skills/golunch-parallel-tasks   # Qoder
+ln -s "$PWD/skills/golunch-parallel-tasks" ~/.config/opencode/skill/golunch-parallel-tasks
+```
+
 ## Nesting
 
 If `$HOME` points inside another isolated instance, golunch stores its data under
