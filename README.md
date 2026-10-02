@@ -2,7 +2,7 @@
 
 [![ci](https://github.com/raaaas/golunch/actions/workflows/ci.yml/badge.svg)](https://github.com/raaaas/golunch/actions/workflows/ci.yml)
 [![pages](https://img.shields.io/badge/website-golunch-blue)](https://raaaas.github.io/golunch/)
-
+[![release](https://github.com/raaaas/golunch/actions/workflows/release.yml/badge.svg)](https://github.com/raaaas/golunch/actions/workflows/release.yml) 
 ![golunch — multiple agent CLIs, private configs, real isolation, no containers, no daemon](docs/golunch-social.webp)
 
 Run the same agent CLI as many times as you want, each time with its own private
